@@ -1,0 +1,101 @@
+TRUNCATE TABLE
+
+TRUNCATE TABLE test_sentinel_database.neuralsmf.image_classification;
+
+select * from test_sentinel_database.neuralsmf.image_classification;
+
+python main.py --days-back 9 --debug
+
+python main.py --start-date 2025-07-01 --end-date 2025-07-01
+
+    parser.add_argument('--start-date', type=str, help='Start date (YYYY-MM-DD or YYMMDD)')
+    parser.add_argument('--end-date', type=str, help='End date (YYYY-MM-DD or YYMMDD)')
+	
+QUERY PARA FILTRAR POR FECHA:
+
+PRODUCCION SENTINEL v1
+
+SELECT * 
+FROM postiabd.neuralsmf.image_classification 
+WHERE created_at::date = '2024-12-16';
+
+AMBIENTE PRUEBAS SENTINEL v2:
+
+SELECT * 
+FROM test_sentinel_database.neuralsmf.image_classification 
+WHERE created_at::date = '2024-12-19';
+
+LISTAR POR FECHA INGRESADA:
+
+SELECT * 
+FROM test_sentinel_database.neuralsmf.image_classification 
+WHERE reading_date::date = '2024-12-19';
+
+FORMATO PARA HORA EXACTA:
+select * from test_sentinel_database.neuralsmf.image_classification WHERE created_at = '2024-12-18 18:58:54.413426';
+
+FORMATO PARA RANGO DE HORA:
+
+
+CONTAR LOS REGISTROS EN UNA TABLA:
+
+SELECT COUNT(*) AS total_rows
+FROM test_sentinel_database.neuralsmf.image_classification
+WHERE reading_date::date = '2024-12-19';
+
+SELECT COUNT(*) AS total_rows
+FROM test_sentinel_database.neuralsmf.image_classification
+WHERE reading_date::date = '2024-12-19';
+
+BORRAR UN SOLO REGISTRO DE UNA TABLA FILTRANDO POR FECHA:
+
+DELETE FROM test_sentinel_database.neuralsmf.image_classification 
+WHERE reading_date::date = '2024-12-18';
+
+DELETE FROM test_sentinel_database.neuralsmf.image_classification 
+WHERE reading_date::date = '2024-12-18';
+
+--Clasificador por mes created_at
+select
+to_char(ic.created_at,'dd/mm/yyyy') fecha,
+count(ic.file_name) fotografías
+from neuralsmf."image_classification" ic
+where to_char(ic.created_at,'yyyymm') = '202502'
+group by to_char(ic.created_at,'dd/mm/yyyy')
+order by to_char(ic.created_at,'dd/mm/yyyy') desc;
+
+*****************************************************************************
+*****************************************************************************
+*****************************************************************************
+
+--Clasificador por mes
+select
+to_char(ic.reading_date,'dd/mm/yyyy') fecha,
+count(ic.file_name) fotografías
+from neuralsmf."image_classification" ic
+where to_char(ic.reading_date,'yyyymm') = '202504'
+group by to_char(ic.reading_date,'dd/mm/yyyy')
+order by to_char(ic.reading_date,'dd/mm/yyyy') desc;
+
+SELECT * 
+FROM test_sentinel_database.neuralsmf.image_classification 
+WHERE reading_date::date = '2025-01-17';
+
+SELECT * 
+FROM test_sentinel_database.neuralsmf.image_classification 
+WHERE created_at::date = '2025-02-03';
+
+
+SELECT *
+FROM POSTIABD.NEURALSMF.IMAGE_CLASSIFICATION
+WHERE READING_DATE::DATE = '2025-01-18'
+AND image_classification.isgl_path LIKE '%6330968_1987_250118_1.jpg';
+
+SELECT * 
+FROM neuralsmf."image_Read";
+
+
+
+
+
+

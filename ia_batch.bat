@@ -1,0 +1,1 @@
+cmd "/c conda activate sentinel-mvp && python main.py && conda deactivate"

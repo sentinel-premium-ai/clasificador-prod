@@ -1,0 +1,31 @@
+# Entornos virtuales (el culpable de los 250MB)
+sentinel/
+venv/
+venv_win/
+env/
+.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+logs/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE configuration
+.vscode/
+.idea/
+
+# Large files (ignored to keep repo light)
+*.rar
+*.zip
+*.keras
+*.h5
+models/
+venv_wsl/
